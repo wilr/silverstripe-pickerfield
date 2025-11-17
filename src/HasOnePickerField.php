@@ -89,8 +89,23 @@ class HasOnePickerField_Readonly extends ReadonlyField
                     $value = ($one = $this->picker->getCurrentHasOne()) ? $one->Title : 'Not-set';
 
                     if ($one->hasMethod('CMSEditLink')) {
-                        $value = DBField::create_field('HTMLText',
-                            sprintf('<a href="%s">%s</a>', $one->CMSEditLink(), $one->Title)
+                        $fields = $this->picker->getDisplayFields();
+                        $columns = '';
+
+                        foreach ($fields as $field => $title) {
+                            $value = $one->$field;  // get the value of the field
+                            if ($value instanceof DBField) {
+                                $value = $value->RAW();
+                            }
+
+                            if (!empty($value)) {
+                                $columns .= sprintf('<br><strong>%s:</strong> %s', $title, $value);
+                            }
+                        }
+
+                        $value = DBField::create_field(
+                            'HTMLText',
+                            sprintf('<a href="%s">%s</a>%s', $one->CMSEditLink(), $one->Title, $columns)
                         );
                     }
 
