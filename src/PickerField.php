@@ -19,6 +19,8 @@ class PickerField extends GridField
 {
     protected $isHaveOne = false;
 
+    protected $displayFields = [];
+
     /**
      * Usage [e.g. in getCMSFields]
      *    $field = new PickerField('Authors', 'Selected Authors', $this->Authors(), 'Select Author(s)');
@@ -61,13 +63,23 @@ class PickerField extends GridField
         return $this->isHaveOne;
     }
 
+
     public function setDisplayFields($fields)
     {
+        $this->displayFields = $fields;
+
         $this->config->getComponentByType(GridFieldDataColumns::class)
             ->setDisplayFields($fields);
 
         return $this;
     }
+
+
+    public function getDisplayFields(): array
+    {
+        return $this->displayFields;
+    }
+
 
     public function setSearchFilters($filters)
     {
@@ -75,6 +87,7 @@ class PickerField extends GridField
 
         return $this;
     }
+
 
     public function setSearchExcludes($excludes)
     {
@@ -89,15 +102,17 @@ class PickerField extends GridField
      */
     public function setSearchList(SS_List $list)
     {
-        $this->getPickerSearchField() ->setSearchList($list);
+        $this->getPickerSearchField()->setSearchList($list);
 
         return $this;
     }
+
 
     public function getSearchFilters()
     {
         return $this->getPickerSearchField()->getSearchFilters();
     }
+
 
     public function getSearchExcludes()
     {
