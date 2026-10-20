@@ -3,7 +3,7 @@
 namespace Briceburg\PickerField;
 
 use Symbiote\GridFieldExtensions\GridFieldAddExistingSearchButton;
-use SilverStripe\ORM\SS_List;
+use SilverStripe\Model\List\SS_List;
 
 class PickerFieldAddExistingSearchButton extends GridFieldAddExistingSearchButton
 {

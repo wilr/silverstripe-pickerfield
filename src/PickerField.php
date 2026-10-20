@@ -12,7 +12,7 @@ use SilverStripe\Forms\GridField\GridFieldDetailForm;
 use SilverStripe\Forms\GridField\GridFieldEditButton;
 use SilverStripe\Forms\GridField\GridFieldPaginator;
 use Symbiote\GridFieldExtensions\GridFieldTitleHeader;
-use SilverStripe\ORM\SS_List;
+use SilverStripe\Model\List\SS_List;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 
 class PickerField extends GridField
