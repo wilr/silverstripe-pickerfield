@@ -4,7 +4,7 @@ namespace Briceburg\PickerField;
 
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldDeleteAction;
-use SilverStripe\ORM\ArrayList;
+use SilverStripe\Model\List\ArrayList;
 
 class PickerFieldDeleteAction extends GridFieldDeleteAction
 {
